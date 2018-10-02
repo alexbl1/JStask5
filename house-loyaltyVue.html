@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>House Party Loyalty Vue</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="congres113.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body data-chamber="hloy">
+    <div class="container">
+
+
+        <header class="page-header">
+            <div class="row">
+
+                <div class="col-sm-6"> <img src="congress_logo.png" class="my_logo" alt="congress_logo" width="100" height="100">
+                </div>
+
+            </div>
+
+            <h1>TGIF</h1>
+            <a class="pull-right" href="info@tgif.net">
+          <span class="glyphicon glyphicon-envelope"></span>  info@tgif.net
+        </a>
+        </header>
+        <div>
+            <nav class="navbar navbar-inverse">
+
+
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="home-dataVue.html">Home</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-dataVue.html">House</a></li>
+                                <li><a href="senate-dataVue.html">Senate</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Attendance
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-attendanceVue.html">House</a></li>
+                                <li><a href="senate-attendanceVue.html">Senate</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-loyaltyVue.html">House</a></li>
+                                <li><a href="senate-loyaltyVue.html">Senate</a></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+            </nav>
+
+        </div>
+
+
+        <!--Table container-->
+        <div id="app">
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <h2>Party Loyalty</h2>
+                    <p class="text-justify">Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
+                </div>
+                <div class="col-sm-6">
+                    <div class="pull-right">
+                        <h2>{{titleGlanceH}}</h2>
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th v-for="thead in theadsG">{{thead}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr v-for="(value,key) in statisticsVue">
+                                    <td>{{key}}</td>
+                                    <td>{{value.total}}</td>
+                                    <td>{{value.avg}}%</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <h2>{{titleLeastL}}</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th v-for="thead in theadsL">{{thead}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="bottomten in bottomTen">
+                            <td><a v-bind:href= "bottomten.url">   {{bottomten.first_name}} {{bottomten.middle_name}} {{bottomten.last_name}}</a></td>
+                                <td>{{bottomten.total_votes}}</td>
+                                <td>{{bottomten.votes_with_party_pct}}%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-6">
+                    <div class="pull-right">
+                        <h2>{{titleMostL}}</h2>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                <th v-for="thead in theadsL">{{thead}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="topten in topTen">
+                                <td ><a v-bind:href= "topten.url">   {{topten.first_name}} {{topten.middle_name}} {{topten.last_name}}</a></td>
+                                <td>{{topten.total_votes}}</td>
+                                <td>{{topten.votes_with_party_pct}}%</td>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <footer class="navbar-fixed-bottom">
+            <div style="background-color: #599ad3;">
+
+                <div class="footer-copyright text-center py-3">© 2016 TGIF:All rights reserved
+                </div>
+
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <script src="SH_loyaltyAttVue.js"></script>
+</body>
+</html>

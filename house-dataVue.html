@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>House Vue</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="congres113.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body data-chamber="house">
+    <div class="container">
+
+
+        <header class="page-header">
+            <div class="row">
+
+                <div class="col-sm-6"> <img src="congress_logo.png" class="my_logo" alt="congress_logo" width="100" height="100">
+                </div>
+
+            </div>
+
+            <h1>TGIF</h1>
+            <a class="pull-right" href="info@tgif.net">
+          <span class="glyphicon glyphicon-envelope"></span>  info@tgif.net
+        </a>
+        </header>
+        <div>
+            <nav class="navbar navbar-inverse">
+
+
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="home-dataVue.html">Home</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-dataVue.html">House</a></li>
+                                <li><a href="senate-dataVue.html">Senate</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Attendance
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-attendanceVue.html">House</a></li>
+                                <li><a href="senate-attendanceVue.html">Senate</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-loyaltyVue.html">House</a></li>
+                                <li><a href="senate-loyaltyVue.html">Senate</a></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+            </nav>
+
+        </div>
+
+        <!--Table container-->
+        <div id="app">
+            <h2>Congressmen</h2>
+
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <p class="text-justify">The major power of the House is to pass federal legislation that affects the entire country, although its bills must also be passed by the Senate and further agreed to by the U.S. President before becoming law (unless both the House and Senate re-pass the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President in case there is no majority in the Electoral College.</p>
+                    <p class="text-justify">Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div name="partyFilter" id="checkboxes" action="" method="">
+                        <input type="checkbox" name="filterStatus" id="cbR" value="R" /><label for="party">Republican</label>
+                        <input type="checkbox" name="filterStatus" id="cbD" value="D" /><label for="party">Democrat</label>
+                        <input type="checkbox" name="filterStatus" id="cbI" value="I" /><label for="party">Independent</label>
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="pull-right">
+                        <div class="btn-group">
+
+
+
+                            <select id="dropdown"> 
+                                <option>All states</option>
+                                <option v-for ="state in states">{{state}}</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <table  class="table table-hover">
+                <thead >
+                    <tr>
+                        <th v-for="thead in theads">{{thead}}</th>
+
+                    </tr>
+                </thead>
+                <tbody id="tbodyMesage">
+                    
+                    <tr v-for="member in members">
+                        <td><a v-bind:href="member.url">   {{member.first_name}} {{member.middle_name}} {{member.last_name}}</a></td>
+                        <td>{{member.party}}</td>
+                        <td>{{member.state}}</td>
+                        <td>{{member.seniority}}</td>
+                        <td>{{member.votes_with_party_pct}} %</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <footer class="navbar-fixed-bottom">
+            <div style="background-color: #599ad3;">
+
+                <div class="footer-copyright text-center py-3">© 2016 TGFI:All rights reserved
+                </div>
+
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <script src="houseVue.js"></script>
+
+
+</body>
+
+</html>

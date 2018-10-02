@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>House Attendance Vue</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="congres113.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body data-chamber="hatt">
+    <div class="container">
+
+
+        <header class="page-header">
+            <div class="row">
+
+                <div class="col-sm-6"> <img src="congress_logo.png" class="my_logo" alt="congress_logo" width="100" height="100">
+                </div>
+
+            </div>
+
+            <h1>TGIF</h1>
+            <a class="pull-right" href="info@tgif.net">
+          <span class="glyphicon glyphicon-envelope"></span>  info@tgif.net
+        </a>
+        </header>
+        <div>
+            <nav class="navbar navbar-inverse">
+
+
+                <div class="container-fluid">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="home-dataVue.html">Home</a></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-dataVue.html">House</a></li>
+                                <li><a href="senate-dataVue.html">Senate</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Attendance
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-attendanceVue.html">House</a></li>
+                                <li><a href="senate-attendanceVue.html">Senate</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="house-loyaltyVue.html">House</a></li>
+                                <li><a href="senate-loyaltyVue.html">Senate</a></li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+            </nav>
+
+        </div>
+
+
+        <header>
+            <div>
+            </div>
+        </header>
+        <!--Table container-->
+        <div id="app">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Attendance</h2>
+                    <p class="text-justify">The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
+
+                    <p class="text-justify">The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+                </div>
+
+
+                <div class="col-sm-6">
+                    <div class="pull-right">
+                        <h2>{{titleGlanceH}}</h2>
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th v-for="thead in theadsG">{{thead}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr v-for="(value,key) in statisticsVue">
+                                    <td>{{key}}</td>
+                                    <td>{{value.total}}</td>
+                                    <td>{{value.avg}}%</td>
+
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>{{titleLeastE}}</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th v-for="thead in theadsE">{{thead}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="topten in topTen">
+                            <td><a v-bind:href= "topten.url">   {{topten.first_name}} {{topten.middle_name}} {{topten.last_name}}</a></td>
+                                <td>{{topten.missed_votes}}</td>
+                                <td>{{topten.missed_votes_pct}}%</td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-m-6">
+                    <div class="pull-right">
+                        <h2>{{titleMostE}}</h2>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th v-for="thead in theadsE">{{thead}}</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                            <tr v-for="bottomten in bottomTen">
+                                <td ><a v-bind:href= "bottomten.url">   {{bottomten.first_name}} {{bottomten.middle_name}} {{bottomten.last_name}}</a></td>
+                                <td>{{bottomten.missed_votes}}</td>
+                                <td>{{bottomten.missed_votes_pct}}%</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <footer class="navbar-fixed-bottom">
+            <div style="background-color: #599ad3;">
+
+                <div class="footer-copyright text-center py-3">© 2016 TGIF:All rights reserved
+                </div>
+
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <script src="SH_loyaltyAttVue.js"></script>
+</body>
+
+</html>

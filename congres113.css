@@ -1,0 +1,16 @@
+
+
+
+
+.myFooter {
+  position: fixed;
+  bottom: 0px;
+  width: 90%;
+  height: 50px;
+  background: #0a6ba7;
+  border: solid 1px #eee;
+    margin-top: 20px;
+   
+    padding-top: 20px;
+}
+
